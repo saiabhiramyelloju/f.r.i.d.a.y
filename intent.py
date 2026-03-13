@@ -17,11 +17,7 @@ def detect_intent(message):
 def process_message(message):
     print("Processing: ",message)
 
-    greetings = [
-        "hello",
-        "hi"
-        "bonjour"
-    ]
+    greetings = ["hello","hi"]
     wishes = [
         "good morning",
         "good afternoon",
@@ -29,6 +25,6 @@ def process_message(message):
         "good night"
     ]
     for word in greetings:
-        if word in message.lower():
+        if word == message.lower():
             return random.choice(greetings) + ", I am F.R.I.D.A.Y"    
     return "i dont understand"
