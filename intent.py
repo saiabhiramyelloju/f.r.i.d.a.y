@@ -14,7 +14,10 @@ def detect_intent(message):
             return memory
     return "normal"
 
-def process_message(message):
+#processes the mesage
+user_state = {}
+def process_message(user_id, message):
+    global user_state
     print("Processing: ",message)
 
     #keywords that messages have
@@ -43,8 +46,10 @@ def process_message(message):
     #creater of friday response
     if message.lower() == ("who created you" or "founder of friday" or "creater of you"):
         return "AbhiRam"
+    
     #addition
     if message.lower() == "/add":
+        user_state[user_id] = "add"
         return "give me two numbers to for addition with spaces between\nExample: 2 3"
     numbers = message.split()
     if len(numbers) == 2:
@@ -55,6 +60,7 @@ def process_message(message):
         result = a + b
     #subtraction
     if message.lower() == "/subtract":
+        user_state[user_id] = "subtract"
         return "give me two numbers to for subtraction with spaces between\nExample: 2 3"
     numbers = message.split()
     if len(numbers) == 2:
@@ -65,6 +71,7 @@ def process_message(message):
         result = a - b
     #multiplication
     if message.lower() == "/muliply":
+        user_state[user_id] = "multiply"
         return "give me two numbers to for multiplication with spaces between\nExample: 2 3"
     numbers = message.split()
     if len(numbers) == 2:
@@ -75,6 +82,7 @@ def process_message(message):
         result = a * b
     #division
     if message.lower() == "/divide":
+        user_state[user_id] = "division"
         return "give me two numbers to for division with spaces between\nExample: 2 3"
     numbers = message.split()
     if len(numbers) == 2:
